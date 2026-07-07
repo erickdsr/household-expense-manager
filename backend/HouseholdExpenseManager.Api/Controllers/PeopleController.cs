@@ -1,5 +1,5 @@
-using HouseholdExpenseManager.Api.DTOs.Person;
 using HouseholdExpenseManager.Api.Common;
+using HouseholdExpenseManager.Api.DTOs.Person;
 using HouseholdExpenseManager.Api.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

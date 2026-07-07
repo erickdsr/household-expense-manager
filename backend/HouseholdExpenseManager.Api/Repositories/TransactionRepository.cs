@@ -26,7 +26,9 @@ public class TransactionRepository(AppDbContext context) : ITransactionRepositor
     public async Task<List<FinancialTransaction>> GetByPersonIdAsync(int personId)
     {
         return await context.Transactions
+            .Include(transaction => transaction.Person)
             .Where(transaction => transaction.PersonId == personId)
+            .OrderByDescending(transaction => transaction.CreatedAt)
             .ToListAsync();
     }
 }
