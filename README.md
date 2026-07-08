@@ -294,21 +294,27 @@ Exemplo:
 
 #  Demonstração
 
-## Dashboard
+### Dashboard
 
-> Adicione uma captura de tela aqui.
+<p align="center">
+  <img src="frontend/src/assets/dashboard.png" width="900"/>
+</p>
 
----
-
-## Cadastro de Pessoas
-
-> Adicione uma captura de tela aqui.
 
 ---
 
-## Cadastro de Transações
+### Cadastro de Pessoas
 
-> Adicione uma captura de tela aqui.
+<p align="center">
+  <img src="frontend/src/assets/pessoas.png" width="900"/>
+</p>
+---
+
+### Cadastro de Transações
+
+<p align="center">
+  <img src="frontend/src/assets/transacao.png" width="900"/>
+</p>
 
 ---
 
