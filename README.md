@@ -297,23 +297,23 @@ Exemplo:
 ### Dashboard
 
 <p align="center">
-  <img src="frontend/src/assets/dashboard.png" width="900"/>
+  <img src="frontend/src/assets/dashboard.png" width="900" alt="Dashboard" />
 </p>
-
 
 ---
 
 ### Cadastro de Pessoas
 
 <p align="center">
-  <img src="frontend/src/assets/pessoas.png" width="900"/>
+  <img src="frontend/src/assets/pessoas.png" width="900" alt="Cadastro de Pessoas" />
 </p>
+
 ---
 
 ### Cadastro de Transações
 
 <p align="center">
-  <img src="frontend/src/assets/transacao.png" width="900"/>
+  <img src="frontend/src/assets/transacoes.png" width="900" alt="Cadastro de Transações" />
 </p>
 
 ---
