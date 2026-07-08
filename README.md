@@ -6,9 +6,9 @@ A aplicação permite o gerenciamento de pessoas, cadastro de transações finan
 
 ---
 
-# 📋 Funcionalidades
+#  Funcionalidades
 
-## 👤 Cadastro de Pessoas
+##  Cadastro de Pessoas
 
 - Cadastro de pessoas
 - Listagem de pessoas cadastradas
@@ -23,7 +23,7 @@ Cada pessoa possui:
 
 ---
 
-## 💵 Cadastro de Transações
+##  Cadastro de Transações
 
 Permite:
 
@@ -41,7 +41,7 @@ Cada transação possui:
 
 ---
 
-## 📊 Consulta de Totais
+##  Consulta de Totais
 
 O sistema calcula automaticamente:
 
@@ -59,7 +59,7 @@ Também apresenta o resumo geral contendo:
 
 ---
 
-# 📌 Regras de Negócio
+#  Regras de Negócio
 
 O sistema implementa as seguintes regras:
 
@@ -71,7 +71,7 @@ O sistema implementa as seguintes regras:
 
 ---
 
-# 🚀 Tecnologias Utilizadas
+#  Tecnologias Utilizadas
 
 ## Back-end
 
@@ -91,7 +91,7 @@ O sistema implementa as seguintes regras:
 
 ---
 
-# 📁 Estrutura do Projeto
+#  Estrutura do Projeto
 
 ```text
 household-expense-manager
@@ -106,7 +106,7 @@ household-expense-manager
 
 ---
 
-# 🏛 Arquitetura
+#  Arquitetura
 
 O projeto foi desenvolvido utilizando uma arquitetura em camadas, separando responsabilidades entre apresentação, regras de negócio e acesso aos dados.
 
@@ -130,7 +130,7 @@ Essa organização facilita a manutenção, escalabilidade e legibilidade do có
 
 ---
 
-# ⚙️ Como Executar o Projeto
+#  Como Executar o Projeto
 
 ## Pré-requisitos
 
@@ -154,7 +154,7 @@ cd household-expense-manager
 
 ---
 
-# 🖥 Executando o Back-end
+#  Executando o Back-end
 
 Entre na pasta:
 
@@ -188,7 +188,7 @@ https://localhost:5001/swagger
 
 ---
 
-# 🌐 Executando o Front-end
+#  Executando o Front-end
 
 Abra outro terminal.
 
@@ -218,7 +218,7 @@ http://localhost:5173
 
 ---
 
-# 📡 Endpoints da API
+#  Endpoints da API
 
 ## Pessoas
 
@@ -247,7 +247,7 @@ http://localhost:5173
 
 ---
 
-# 💾 Persistência
+#  Persistência
 
 Os dados são armazenados utilizando **SQLite**, garantindo que permaneçam disponíveis mesmo após o encerramento da aplicação.
 
@@ -259,7 +259,7 @@ household_expenses.db
 
 ---
 
-# ✅ Validações Implementadas
+#  Validações Implementadas
 
 O sistema realiza validações tanto no front-end quanto no back-end.
 
@@ -277,7 +277,7 @@ As regras de negócio são validadas principalmente no back-end.
 
 ---
 
-# ⚠ Tratamento de Erros
+#  Tratamento de Erros
 
 A API retorna mensagens padronizadas para facilitar o tratamento pelo front-end.
 
@@ -292,7 +292,7 @@ Exemplo:
 
 ---
 
-# 🖼 Demonstração
+#  Demonstração
 
 ## Dashboard
 
@@ -312,7 +312,7 @@ Exemplo:
 
 ---
 
-# 📈 Possíveis Melhorias Futuras
+#  Possíveis Melhorias Futuras
 
 Algumas funcionalidades que podem ser adicionadas futuramente:
 
@@ -328,7 +328,7 @@ Algumas funcionalidades que podem ser adicionadas futuramente:
 
 ---
 
-# 👨‍💻 Autor
+#  Autor
 
 **Francisco Erick de Sousa Rodrigues**
 
