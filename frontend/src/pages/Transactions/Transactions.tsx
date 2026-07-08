@@ -10,6 +10,11 @@ import type { FinancialTransaction, Person, TransactionType } from '../../types'
 import { getErrorMessage } from '../../utils/errors'
 import { formatCurrency, formatDate } from '../../utils/formatters'
 
+const transactionTypeLabels: Record<TransactionType, string> = {
+  Expense: 'Despesa',
+  Income: 'Renda',
+}
+
 export function Transactions() {
   const [transactions, setTransactions] = useState<FinancialTransaction[]>([])
   const [people, setPeople] = useState<Person[]>([])
@@ -24,6 +29,7 @@ export function Transactions() {
 
   async function loadPageData() {
     try {
+      // Transacoes tambem precisam da lista de pessoas, pois cada registro pertence a uma pessoa.
       setIsLoading(true)
       setError('')
       const [transactionsData, peopleData] = await Promise.all([
@@ -69,6 +75,7 @@ export function Transactions() {
     const parsedAmount = Number(amount)
     const parsedPersonId = Number(personId)
 
+    // A validacao no cliente espelha as regras da API e evita requisicoes desnecessarias.
     if (!trimmedDescription) {
       setError('Descricao e obrigatoria.')
       return
@@ -146,8 +153,8 @@ export function Transactions() {
             value={type}
             onChange={(event) => setType(event.target.value as TransactionType)}
           >
-            <option value="Expense">Expense</option>
-            <option value="Income">Income</option>
+            <option value="Expense">Despesa</option>
+            <option value="Income">Renda</option>
           </Select>
           <Select
             label="Pessoa"
@@ -203,6 +210,7 @@ export function Transactions() {
                 key: 'type',
                 header: 'Tipo',
                 render: (transaction) => (
+                  // A API mantem enums em ingles; a UI exibe rotulos em portugues.
                   <span
                     className={
                       transaction.type === 'Income'
@@ -210,7 +218,7 @@ export function Transactions() {
                         : 'badge badge--expense'
                     }
                   >
-                    {transaction.type}
+                    {transactionTypeLabels[transaction.type]}
                   </span>
                 ),
               },

@@ -4,6 +4,7 @@ using HouseholdExpenseManager.Api.Exceptions;
 
 namespace HouseholdExpenseManager.Api.Middlewares;
 
+// Converte excecoes de controllers/services em respostas JSON consistentes da API.
 public class ErrorHandlingMiddleware(RequestDelegate next)
 {
     public async Task InvokeAsync(HttpContext context)
@@ -20,7 +21,7 @@ public class ErrorHandlingMiddleware(RequestDelegate next)
 
     private static async Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
-        // Business and validation failures are converted to clear JSON responses for the frontend.
+        // Falhas de negocio e validacao viram respostas JSON claras para o frontend.
         var statusCode = exception switch
         {
             NotFoundException => StatusCodes.Status404NotFound,

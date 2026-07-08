@@ -10,7 +10,7 @@ namespace HouseholdExpenseManager.Api.Controllers;
 public class TransactionsController(ITransactionService transactionService) : ControllerBase
 {
     /// <summary>
-    /// Returns all registered transactions including the person's name.
+    /// Retorna todas as transacoes cadastradas incluindo o nome da pessoa.
     /// </summary>
     [HttpGet]
     [ProducesResponseType(typeof(List<TransactionResponse>), StatusCodes.Status200OK)]
@@ -22,7 +22,7 @@ public class TransactionsController(ITransactionService transactionService) : Co
     }
 
     /// <summary>
-    /// Returns a transaction by id including the person's name.
+    /// Retorna uma transacao pelo id incluindo o nome da pessoa.
     /// </summary>
     [HttpGet("{id:int}", Name = nameof(GetTransactionByIdAsync))]
     [ProducesResponseType(typeof(TransactionResponse), StatusCodes.Status200OK)]
@@ -35,7 +35,7 @@ public class TransactionsController(ITransactionService transactionService) : Co
     }
 
     /// <summary>
-    /// Creates a transaction for an existing person.
+    /// Cria uma transacao para uma pessoa existente.
     /// </summary>
     [HttpPost]
     [ProducesResponseType(typeof(TransactionResponse), StatusCodes.Status201Created)]

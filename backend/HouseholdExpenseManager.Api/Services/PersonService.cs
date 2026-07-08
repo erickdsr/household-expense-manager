@@ -7,6 +7,7 @@ using HouseholdExpenseManager.Api.Services.Interfaces;
 
 namespace HouseholdExpenseManager.Api.Services;
 
+// Cuida da validacao e da orquestracao de pessoas antes dos dados chegarem ao repositorio.
 public class PersonService(IPersonRepository personRepository) : IPersonService
 {
     public async Task<List<PersonResponse>> GetAllAsync()
@@ -30,6 +31,7 @@ public class PersonService(IPersonRepository personRepository) : IPersonService
 
     public async Task<PersonResponse> CreateAsync(CreatePersonRequest request)
     {
+        // Normaliza a entrada do usuario antes de validar e salvar.
         var name = request.Name.Trim();
 
         if (string.IsNullOrWhiteSpace(name))
@@ -62,7 +64,7 @@ public class PersonService(IPersonRepository personRepository) : IPersonService
             throw new NotFoundException("Person not found.");
         }
 
-        // Related transactions are removed by the EF Core cascade delete configuration.
+        // As transacoes relacionadas sao removidas pela configuracao de cascade delete do EF Core.
         await personRepository.DeleteAsync(person);
     }
 

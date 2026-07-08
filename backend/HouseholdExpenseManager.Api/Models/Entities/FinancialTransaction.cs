@@ -4,7 +4,7 @@ using HouseholdExpenseManager.Api.Models.Enums;
 
 namespace HouseholdExpenseManager.Api.Models.Entities;
 
-// Represents an income or expense recorded for a person.
+// Representa uma renda ou despesa registrada para uma pessoa.
 public class FinancialTransaction
 {
     public int Id { get; set; }

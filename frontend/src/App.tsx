@@ -8,6 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <Layout>
+        {/* Rotas principais renderizadas dentro do layout compartilhado com navegacao. */}
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/people" element={<People />} />

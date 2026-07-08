@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HouseholdExpenseManager.Api.Repositories;
 
+// Centraliza consultas de transacoes e carrega Person quando a UI precisa do nome da pessoa.
 public class TransactionRepository(AppDbContext context) : ITransactionRepository
 {
     public async Task<List<FinancialTransaction>> GetAllAsync()

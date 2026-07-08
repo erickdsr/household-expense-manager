@@ -5,6 +5,7 @@ namespace HouseholdExpenseManager.Api.Data.Context;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
+    // As propriedades DbSet definem as tabelas gerenciadas pelo EF Core nesta aplicacao.
     public DbSet<Person> People => Set<Person>();
 
     public DbSet<FinancialTransaction> Transactions => Set<FinancialTransaction>();
@@ -17,7 +18,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         {
             entity.ToTable("People");
 
-            // Deleting a person must also delete every related transaction.
+            // Ao excluir uma pessoa, todas as transacoes relacionadas tambem devem ser excluidas.
             entity.HasMany(person => person.Transactions)
                 .WithOne(transaction => transaction.Person)
                 .HasForeignKey(transaction => transaction.PersonId)
@@ -28,6 +29,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         {
             entity.ToTable("Transactions");
 
+            // Armazena valores monetarios com duas casas decimais para evitar problemas de arredondamento.
             entity.Property(transaction => transaction.Amount)
                 .HasPrecision(18, 2);
         });

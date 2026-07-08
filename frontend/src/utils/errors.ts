@@ -8,6 +8,7 @@ type ApiErrorBody = {
 }
 
 export function getErrorMessage(error: unknown): string {
+  // O Axios pode receber formatos diferentes de erro do ASP.NET, validacao ou falhas de rede.
   if (axios.isAxiosError<ApiErrorBody | string>(error)) {
     const data = error.response?.data
 
@@ -20,6 +21,7 @@ export function getErrorMessage(error: unknown): string {
       if (data.error) return data.error
       if (data.title) return data.title
 
+      // A validacao de modelo do ASP.NET retorna um dicionario de campos para mensagens.
       const validationMessages = data.errors
         ? Object.values(data.errors).flat()
         : []

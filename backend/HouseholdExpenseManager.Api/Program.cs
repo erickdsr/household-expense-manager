@@ -11,8 +11,9 @@ using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Registra as dependencias da aplicacao por camada: dados, regras de negocio e resumos.
 builder.Services.AddDbContext<AppDbContext>(options =>
-    // SQLite keeps the data in a local file so records remain after the app closes.
+    // SQLite mantem os dados em um arquivo local para preservar os registros apos fechar a aplicacao.
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
@@ -34,6 +35,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
+        // Mantem os valores de enum legiveis no contrato da API, por exemplo "Income" em vez de 1.
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(allowIntegerValues: false));
     });
 builder.Services.AddEndpointsApiExplorer();
@@ -43,7 +45,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Title = "Household Expense Manager API",
         Version = "v1",
-        Description = "API for managing people, household financial transactions, and expense summaries."
+        Description = "API para gerenciar pessoas, transacoes financeiras domesticas e resumos de despesas."
     });
 
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -55,6 +57,7 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
+    // Aplica migracoes pendentes automaticamente para alinhar o banco local ao modelo atual.
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     context.Database.Migrate();
 }
@@ -64,6 +67,7 @@ app.UseCors("AllowFrontend");
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
+    // O Swagger UI fica na raiz da API para facilitar a exploracao local.
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Household Expense Manager API v1");
     c.RoutePrefix = string.Empty;
 });

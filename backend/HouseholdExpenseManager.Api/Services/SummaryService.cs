@@ -5,6 +5,7 @@ using HouseholdExpenseManager.Api.Services.Interfaces;
 
 namespace HouseholdExpenseManager.Api.Services;
 
+// Monta os totais financeiros somente leitura usados pelo dashboard.
 public class SummaryService(
     IPersonRepository personRepository,
     ITransactionRepository transactionRepository) : ISummaryService
@@ -21,7 +22,7 @@ public class SummaryService(
         {
             var transactions = await transactionRepository.GetByPersonIdAsync(person.Id);
 
-            // Income and expenses are calculated separately for each person.
+            // Renda e despesas sao calculadas separadamente para cada pessoa.
             var totalIncome = transactions
                 .Where(transaction => transaction.Type == TransactionType.Income)
                 .Sum(transaction => transaction.Amount);
@@ -30,7 +31,7 @@ public class SummaryService(
                 .Where(transaction => transaction.Type == TransactionType.Expense)
                 .Sum(transaction => transaction.Amount);
 
-            // Balance is what remains after subtracting expenses from income.
+            // Saldo e o resultado da subtracao das despesas da renda.
             var balance = totalIncome - totalExpenses;
 
             generalIncome += totalIncome;

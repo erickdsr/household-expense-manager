@@ -14,6 +14,7 @@ interface TableProps<T> {
   getRowKey: (item: T) => string | number
 }
 
+// Renderizador de tabela generico para paginas que precisam apenas descrever colunas e linhas.
 export function Table<T>({
   columns,
   data,

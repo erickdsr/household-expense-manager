@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HouseholdExpenseManager.Api.Models.Entities;
 
-// Represents a person who owns financial transactions.
+// Representa uma pessoa que possui transacoes financeiras.
 public class Person
 {
     public int Id { get; set; }

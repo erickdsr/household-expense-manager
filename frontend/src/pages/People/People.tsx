@@ -18,6 +18,7 @@ export function People() {
 
   async function loadPeople() {
     try {
+      // Recarrega a lista apos criar/excluir para a tabela refletir os dados persistidos.
       setIsLoading(true)
       setError('')
       const data = await personService.getPeople()
@@ -54,6 +55,7 @@ export function People() {
     const trimmedName = name.trim()
     const parsedAge = Number(age)
 
+    // A validacao no cliente da feedback rapido antes da API validar as mesmas regras.
     if (!trimmedName) {
       setError('Nome e obrigatorio.')
       return
@@ -84,6 +86,7 @@ export function People() {
   }
 
   async function handleDelete(person: Person) {
+    // Excluir uma pessoa tambem exclui suas transacoes pela regra de cascade do backend.
     const confirmed = window.confirm(`Deseja deletar ${person.name}?`)
 
     if (!confirmed) {

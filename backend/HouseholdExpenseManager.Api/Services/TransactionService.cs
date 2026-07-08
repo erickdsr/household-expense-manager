@@ -8,6 +8,7 @@ using HouseholdExpenseManager.Api.Services.Interfaces;
 
 namespace HouseholdExpenseManager.Api.Services;
 
+// Aplica validacoes e regras de negocio especificas de transacoes antes da persistencia.
 public class TransactionService(
     ITransactionRepository transactionRepository,
     IPersonRepository personRepository) : ITransactionService
@@ -33,6 +34,7 @@ public class TransactionService(
 
     public async Task<TransactionResponse> CreateAsync(CreateTransactionRequest request)
     {
+        // Normaliza a descricao para que espacos em branco nao sejam salvos como texto valido.
         var description = request.Description.Trim();
 
         if (string.IsNullOrWhiteSpace(description))
@@ -57,7 +59,7 @@ public class TransactionService(
             throw new NotFoundException("Person not found.");
         }
 
-        // Minors can only register expenses, never income.
+        // Menores de idade podem registrar apenas despesas, nunca renda.
         if (person.Age < 18 && request.Type == TransactionType.Income)
         {
             throw new BusinessRuleException("Minors can only register expense transactions.");

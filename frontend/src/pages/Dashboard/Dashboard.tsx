@@ -14,6 +14,7 @@ export function Dashboard() {
   useEffect(() => {
     async function loadSummary() {
       try {
+        // O dashboard e somente leitura, entao carrega o resumo atual ao entrar na pagina.
         setIsLoading(true)
         setError('')
         const data = await summaryService.getSummary()
@@ -42,6 +43,7 @@ export function Dashboard() {
 
       {!isLoading && !error && summary && (
         <>
+          {/* Totais gerais aparecem primeiro porque resumem toda a casa. */}
           <section className="stats-grid" aria-label="Totais gerais">
             <StatCard
               label="Receitas"
@@ -64,6 +66,7 @@ export function Dashboard() {
             <div className="panel__header">
               <h2>Totais por pessoa</h2>
             </div>
+            {/* Linhas por pessoa ajudam a identificar renda, despesas e saldo de cada uma. */}
             <Table<PersonSummary>
               data={summary.people}
               emptyMessage="Nenhum total por pessoa encontrado."

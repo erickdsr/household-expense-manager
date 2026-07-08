@@ -9,7 +9,7 @@ namespace HouseholdExpenseManager.Api.Controllers;
 public class SummaryController(ISummaryService summaryService) : ControllerBase
 {
     /// <summary>
-    /// Returns financial totals grouped by person and the general household balance.
+    /// Retorna os totais financeiros agrupados por pessoa e o saldo geral da casa.
     /// </summary>
     [HttpGet]
     [ProducesResponseType(typeof(SummaryResponse), StatusCodes.Status200OK)]

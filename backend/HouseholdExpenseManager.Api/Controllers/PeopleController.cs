@@ -10,7 +10,7 @@ namespace HouseholdExpenseManager.Api.Controllers;
 public class PeopleController(IPersonService personService) : ControllerBase
 {
     /// <summary>
-    /// Returns all registered people ordered by identifier.
+    /// Retorna todas as pessoas cadastradas ordenadas pelo identificador.
     /// </summary>
     [HttpGet]
     [ProducesResponseType(typeof(List<PersonResponse>), StatusCodes.Status200OK)]
@@ -22,7 +22,7 @@ public class PeopleController(IPersonService personService) : ControllerBase
     }
 
     /// <summary>
-    /// Returns a person by id.
+    /// Retorna uma pessoa pelo id.
     /// </summary>
     [HttpGet("{id:int}", Name = nameof(GetPersonByIdAsync))]
     [ProducesResponseType(typeof(PersonResponse), StatusCodes.Status200OK)]
@@ -35,7 +35,7 @@ public class PeopleController(IPersonService personService) : ControllerBase
     }
 
     /// <summary>
-    /// Creates a person with name and age.
+    /// Cria uma pessoa com nome e idade.
     /// </summary>
     [HttpPost]
     [ProducesResponseType(typeof(PersonResponse), StatusCodes.Status201Created)]
@@ -48,7 +48,7 @@ public class PeopleController(IPersonService personService) : ControllerBase
     }
 
     /// <summary>
-    /// Deletes a person by id and removes related transactions by cascade delete.
+    /// Exclui uma pessoa pelo id e remove as transacoes relacionadas por cascade delete.
     /// </summary>
     [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HouseholdExpenseManager.Api.Repositories;
 
+// Mantem as consultas EF Core de pessoas isoladas das regras de negocio da camada de servico.
 public class PersonRepository(AppDbContext context) : IPersonRepository
 {
     public async Task<List<Person>> GetAllAsync()
@@ -30,6 +31,7 @@ public class PersonRepository(AppDbContext context) : IPersonRepository
 
     public async Task DeleteAsync(Person person)
     {
+        // O cascade delete configurado no AppDbContext tambem remove as transacoes desta pessoa.
         context.People.Remove(person);
         await context.SaveChangesAsync();
     }
