@@ -318,22 +318,6 @@ Exemplo:
 
 ---
 
-#  Possíveis Melhorias Futuras
-
-Algumas funcionalidades que podem ser adicionadas futuramente:
-
-- Edição de pessoas
-- Edição de transações
-- Exclusão de transações
-- Pesquisa e filtros
-- Paginação
-- Testes unitários
-- Docker
-- Deploy em nuvem
-- Autenticação e autorização
-
----
-
 #  Autor
 
 **Francisco Erick de Sousa Rodrigues**
