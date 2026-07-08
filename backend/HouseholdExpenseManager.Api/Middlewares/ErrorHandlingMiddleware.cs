@@ -20,6 +20,7 @@ public class ErrorHandlingMiddleware(RequestDelegate next)
 
     private static async Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
+        // Business and validation failures are converted to clear JSON responses for the frontend.
         var statusCode = exception switch
         {
             NotFoundException => StatusCodes.Status404NotFound,

@@ -17,6 +17,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         {
             entity.ToTable("People");
 
+            // Deleting a person must also delete every related transaction.
             entity.HasMany(person => person.Transactions)
                 .WithOne(transaction => transaction.Person)
                 .HasForeignKey(transaction => transaction.PersonId)

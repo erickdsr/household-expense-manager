@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using HouseholdExpenseManager.Api.DTOs.Person;
 using HouseholdExpenseManager.Api.Exceptions;
 using HouseholdExpenseManager.Api.Models.Entities;
@@ -29,10 +30,21 @@ public class PersonService(IPersonRepository personRepository) : IPersonService
 
     public async Task<PersonResponse> CreateAsync(CreatePersonRequest request)
     {
-        // Creates a person from the request data and persists it through the repository.
+        var name = request.Name.Trim();
+
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ValidationException("Name is required.");
+        }
+
+        if (request.Age < 0)
+        {
+            throw new ValidationException("Age cannot be negative.");
+        }
+
         var person = new Person
         {
-            Name = request.Name,
+            Name = name,
             Age = request.Age
         };
 

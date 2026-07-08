@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using HouseholdExpenseManager.Api.DTOs.Transaction;
 using HouseholdExpenseManager.Api.Exceptions;
 using HouseholdExpenseManager.Api.Models.Entities;
@@ -32,6 +33,23 @@ public class TransactionService(
 
     public async Task<TransactionResponse> CreateAsync(CreateTransactionRequest request)
     {
+        var description = request.Description.Trim();
+
+        if (string.IsNullOrWhiteSpace(description))
+        {
+            throw new ValidationException("Description is required.");
+        }
+
+        if (request.Amount <= 0)
+        {
+            throw new ValidationException("Amount must be greater than zero.");
+        }
+
+        if (request.Type is null)
+        {
+            throw new ValidationException("Transaction type is required.");
+        }
+
         var person = await personRepository.GetByIdAsync(request.PersonId);
 
         if (person is null)
@@ -47,9 +65,9 @@ public class TransactionService(
 
         var transaction = new FinancialTransaction
         {
-            Description = request.Description,
+            Description = description,
             Amount = request.Amount,
-            Type = request.Type,
+            Type = request.Type.Value,
             PersonId = request.PersonId,
             CreatedAt = DateTime.UtcNow
         };
