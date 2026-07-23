@@ -1,4 +1,4 @@
-# household-expense-manager
+# Gerenciador de despesas domésticas
 
 Sistema Full Stack para controle de gastos residenciais, desenvolvido utilizando **ASP.NET Core Web API** no back-end e **React + TypeScript** no front-end.
 
